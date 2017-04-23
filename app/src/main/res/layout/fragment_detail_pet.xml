@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/siberian_husky"
+        android:background="@color/colorPrimaryLight"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_medium_global">
+
+        <moises.com.petsapp.ui.view.TextImageView
+            android:id="@+id/tiv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:text1="@string/name"
+            app:text2="@string/name"
+            app:iconImage="@drawable/svg_panda"/>
+
+        <moises.com.petsapp.ui.view.TextImageView
+            android:id="@+id/tiv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:text1="@string/category"
+            app:text2="@string/category"
+            app:iconImage="@drawable/svg_google_circles_group"/>
+
+        <moises.com.petsapp.ui.view.TextImageView
+            android:id="@+id/tiv_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:text1="@string/tag"
+            app:text2="@string/tag"
+            app:iconImage="@drawable/svg_tag_heart"/>
+
+        <moises.com.petsapp.ui.view.TextImageView
+            android:id="@+id/tiv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            app:text1="@string/status"
+            app:text2="@string/status"
+            app:iconImage="@drawable/svg_altimeter"/>
+
+    </LinearLayout>
+
+</LinearLayout>
