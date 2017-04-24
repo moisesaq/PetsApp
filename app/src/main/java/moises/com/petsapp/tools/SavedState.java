@@ -5,7 +5,7 @@ import android.os.Parcelable;
 import android.util.SparseArray;
 import android.view.View;
 
-/*SAVE STATE OF CUSTOM VIEW*/
+/*SAVE STATE FOR CUSTOM VIEW*/
 public class SavedState extends View.BaseSavedState{
     public SparseArray childrenStates;
 

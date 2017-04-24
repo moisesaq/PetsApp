@@ -19,7 +19,7 @@ public class PetListAdapter extends ArrayAdapter<Pet>{
         super(context, R.layout.pet_item, petList);
     }
 
-    public class ViewHolder{
+    private static class ViewHolder{
         TextView mName;
     }
 

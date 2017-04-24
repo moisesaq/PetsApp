@@ -11,7 +11,7 @@ import retrofit2.http.Query;
 public interface ApiClient {
 
     @GET(API.FIND_BY_STATUS)
-    Call<List<Pet>> getPetListTest(@Query("status") String status);
+    Call<List<Pet>> getPetList(@Query("status") String status);
 
     @GET(API.FIND_PET_BY_ID)
     Call<Pet> getPetDescription(@Path("petId") String petId);

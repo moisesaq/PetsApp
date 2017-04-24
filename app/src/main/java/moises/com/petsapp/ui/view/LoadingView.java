@@ -38,7 +38,7 @@ public class LoadingView extends LinearLayout{
     }
 
     public void showLoading(View hideView){
-        tvMessage.setVisibility(View.GONE);
+        //tvMessage.setVisibility(View.GONE);
         ivImage.setVisibility(View.GONE);
         pbLoading.setVisibility(View.VISIBLE);
         if(hideView != null)

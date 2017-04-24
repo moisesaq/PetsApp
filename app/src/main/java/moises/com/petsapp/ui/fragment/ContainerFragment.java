@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import moises.com.petsapp.R;
 import moises.com.petsapp.model.Pet;
-import moises.com.petsapp.ui.adapter.SectionPagerAdapter;
+import moises.com.petsapp.ui.adapter.SectionPageAdapter;
 import moises.com.petsapp.ui.view.LoadingView;
 import moises.com.petsapp.web.ApiClient;
 import moises.com.petsapp.web.ApiClientAdapter;
@@ -98,11 +98,11 @@ public class ContainerFragment extends BaseFragment {
     }
 
     private void addFragments(Pet pet){
-        SectionPagerAdapter sectionPagerAdapter = new SectionPagerAdapter(getFragmentManager());
-        sectionPagerAdapter.addFragment(PetDetailFragment.newInstance(pet), getString(R.string.description));
-        sectionPagerAdapter.addFragment(PetGalleryFragment.newInstance(pet), getString(R.string.gallery));
+        SectionPageAdapter sectionPageAdapter = new SectionPageAdapter(getFragmentManager());
+        sectionPageAdapter.addFragment(PetDetailFragment.newInstance(pet), getString(R.string.description));
+        sectionPageAdapter.addFragment(PetGalleryFragment.newInstance(pet), getString(R.string.gallery));
 
-        mViewPage.setAdapter(sectionPagerAdapter);
+        mViewPage.setAdapter(sectionPageAdapter);
         tabLayout.setupWithViewPager(mViewPage);
         appBar.addView(tabLayout);
     }

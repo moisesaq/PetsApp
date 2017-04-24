@@ -59,12 +59,12 @@ public class PetListFragment extends BaseFragment implements AdapterView.OnItemC
         lvPetList.setAdapter(mPetListAdapter);
         lvPetList.setOnItemClickListener(this);
         mLoadingView.showLoading(lvPetList);
-        loadPetList();
+        loadPetList("available");
     }
 
-    private void loadPetList(){
+    private void loadPetList(String status){
         ApiClient ap = ApiClientAdapter.newInstance().startConnection();
-        Call<List<Pet>> call = ap.getPetListTest("available");
+        Call<List<Pet>> call = ap.getPetList(status);
         call.enqueue(new Callback<List<Pet>>() {
             @Override
             public void onResponse(Call<List<Pet>> call, Response<List<Pet>> response) {
