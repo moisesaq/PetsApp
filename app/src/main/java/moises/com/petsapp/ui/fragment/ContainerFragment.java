@@ -29,9 +29,7 @@ public class ContainerFragment extends BaseFragment {
     private AppBarLayout appBar;
     private TabLayout tabLayout;
     protected @BindView(R.id.loading_view) LoadingView mLoadingView;
-    protected @BindView(R.id.vp_page_container)
-    ViewPager mViewPage;
-
+    protected @BindView(R.id.vp_page_container) ViewPager mViewPage;
 
     public static ContainerFragment newInstance(@NonNull String petId){
         ContainerFragment containerFragment = new ContainerFragment();
@@ -61,12 +59,8 @@ public class ContainerFragment extends BaseFragment {
             setTitle(getString(R.string.title_detail_fragment));
             View parent = (View)container.getParent();
             appBar = (AppBarLayout)parent.findViewById(R.id.appBar);
-
             tabLayout = new TabLayout(getActivity());
             tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#FFFFFF"));
-            if(petId == null)
-                return;
-
             loadPetDescription();
         }catch (Exception e){
             e.printStackTrace();

@@ -31,9 +31,7 @@ public class PetListFragment extends BaseFragment implements AdapterView.OnItemC
     private OnPetListFragmentListener mListener;
 
     private View view;
-
-    protected @BindView(R.id.loading_view)
-    LoadingView mLoadingView;
+    protected @BindView(R.id.loading_view) LoadingView mLoadingView;
     protected @BindView(R.id.lv_pets) ListView lvPetList;
 
     private PetListAdapter mPetListAdapter;
