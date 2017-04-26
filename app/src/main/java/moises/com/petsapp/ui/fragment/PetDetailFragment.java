@@ -11,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import moises.com.petsapp.R;
 import moises.com.petsapp.model.Pet;
+import moises.com.petsapp.ui.base.BaseFragment;
 import moises.com.petsapp.ui.view.TextImageView;
 
 public class PetDetailFragment extends BaseFragment {

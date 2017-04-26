@@ -6,8 +6,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClientAdapter {
 
-    public static ApiClientAdapter newInstance(){
-        return new ApiClientAdapter();
+    private static ApiClientAdapter mApiClientAdapter;
+
+    private ApiClientAdapter(){
+    }
+
+    public static ApiClientAdapter getInstance(){
+        if(mApiClientAdapter == null)
+            mApiClientAdapter = new ApiClientAdapter();
+        return mApiClientAdapter;
     }
 
     public ApiClient startConnection(){

@@ -3,7 +3,6 @@ package moises.com.petsapp.ui.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,16 +17,13 @@ import butterknife.ButterKnife;
 import moises.com.petsapp.R;
 import moises.com.petsapp.model.Pet;
 import moises.com.petsapp.ui.adapter.PetListAdapter;
+import moises.com.petsapp.ui.base.BaseFragment;
 import moises.com.petsapp.ui.view.LoadingView;
-import moises.com.petsapp.web.ApiClient;
-import moises.com.petsapp.web.ApiClientAdapter;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class PetListFragment extends BaseFragment implements AdapterView.OnItemClickListener{
+public class PetListFragment extends BaseFragment implements AdapterView.OnItemClickListener, PetListContract.View{
 
     public static final String TAG = PetListFragment.class.getSimpleName();
+    private PetListContract.Presenter mPresenter;
     private OnPetListFragmentListener mListener;
 
     private View view;
@@ -38,6 +34,13 @@ public class PetListFragment extends BaseFragment implements AdapterView.OnItemC
 
     public static PetListFragment getInstance(){
         return new PetListFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        PetListInteractor petListInteractor = new PetListInteractor(getContext());
+        new PetListPresenter(this, petListInteractor);
     }
 
     @Nullable
@@ -56,31 +59,40 @@ public class PetListFragment extends BaseFragment implements AdapterView.OnItemC
         mPetListAdapter = new PetListAdapter(getContext(), new ArrayList<Pet>());
         lvPetList.setAdapter(mPetListAdapter);
         lvPetList.setOnItemClickListener(this);
-        mLoadingView.showLoading(lvPetList);
-        loadPetList("available");
+        mPresenter.loadPets("available");
     }
 
-    private void loadPetList(String status){
-        ApiClient ap = ApiClientAdapter.newInstance().startConnection();
-        Call<List<Pet>> call = ap.getPetList(status);
-        call.enqueue(new Callback<List<Pet>>() {
-            @Override
-            public void onResponse(Call<List<Pet>> call, Response<List<Pet>> response) {
-                if(response.isSuccessful() && response.body().size() > 0){
-                    Log.d(TAG, response.message() + " \n >>> " + response.body().size());
-                    mLoadingView.hideLoading("", lvPetList);
-                    mPetListAdapter.addAll(response.body());
-                }else {
-                    mLoadingView.hideLoading(getString(R.string.message_withot_pets), lvPetList);
-                }
-            }
+    @Override
+    public void showLoading(boolean show) {
+        if(show){
+            mLoadingView.showLoading(lvPetList);
+        }else{
+            mLoadingView.hideLoading("", lvPetList);
+        }
+    }
 
-            @Override
-            public void onFailure(Call<List<Pet>> call, Throwable t) {
-                Log.d(TAG, t.getMessage() + " FAILED >>> " + t.toString());
-                mLoadingView.hideLoading(getString(R.string.message_withot_pets), lvPetList);
-            }
-        });
+    @Override
+    public void showPets(List<Pet> pets) {
+        mPetListAdapter.addAll(pets);
+    }
+
+    @Override
+    public void showEmptyList(String message) {
+        mLoadingView.hideLoading(message, lvPetList);
+    }
+
+    @Override
+    public void showError(String error) {
+        mLoadingView.hideLoading(error, lvPetList);
+    }
+
+    @Override
+    public void setPresenter(PetListContract.Presenter presenter) {
+        if(presenter != null){
+            mPresenter = presenter;
+        }else {
+            throw new RuntimeException("Presenter can not to be null");
+        }
     }
 
     @Override

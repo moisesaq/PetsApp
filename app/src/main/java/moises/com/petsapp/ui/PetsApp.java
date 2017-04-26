@@ -3,7 +3,7 @@ package moises.com.petsapp.ui;
 import android.app.Application;
 import android.content.Context;
 
-public class App extends Application{
+public class PetsApp extends Application{
 
     private static Context mContext;
 

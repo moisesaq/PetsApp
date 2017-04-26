@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 import moises.com.petsapp.R;
 import moises.com.petsapp.model.Pet;
 import moises.com.petsapp.ui.adapter.SectionPageAdapter;
+import moises.com.petsapp.ui.base.BaseFragment;
 import moises.com.petsapp.ui.view.LoadingView;
 import moises.com.petsapp.web.ApiClient;
 import moises.com.petsapp.web.ApiClientAdapter;
@@ -71,7 +72,7 @@ public class ContainerFragment extends BaseFragment {
         if(petId == null)
             return;
         mLoadingView.showLoading(mViewPage);
-        ApiClient apiClient = ApiClientAdapter.newInstance().startConnection();
+        ApiClient apiClient = ApiClientAdapter.getInstance().startConnection();
         Call<Pet> petCall = apiClient.getPetDescription(petId);
         petCall.enqueue(new Callback<Pet>() {
             @Override

@@ -1,4 +1,4 @@
-package moises.com.petsapp.ui.fragment;
+package moises.com.petsapp.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

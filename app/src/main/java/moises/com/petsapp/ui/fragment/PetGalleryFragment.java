@@ -13,8 +13,9 @@ import butterknife.ButterKnife;
 import moises.com.petsapp.R;
 import moises.com.petsapp.model.Pet;
 import moises.com.petsapp.ui.adapter.PetGalleryAdapter;
+import moises.com.petsapp.ui.base.BaseFragment;
 
-public class PetGalleryFragment extends BaseFragment{
+public class PetGalleryFragment extends BaseFragment {
     public static final String TAG = PetGalleryFragment.class.getSimpleName();
     public static final String ARG_PARAM = "pet";
     private Pet pet;
