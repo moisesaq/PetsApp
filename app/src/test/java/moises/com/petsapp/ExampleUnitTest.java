@@ -14,4 +14,10 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
+    @Test
+    public void checkAge() throws Exception{
+        int age = 25;
+        assertTrue("Age is not allowed", age < 20 && age > 30);
+    }
 }

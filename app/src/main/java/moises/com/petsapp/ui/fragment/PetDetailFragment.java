@@ -52,7 +52,6 @@ public class PetDetailFragment extends BaseFragment {
         try{
             if(pet == null)
                 return;
-
             tivName.setText1(pet.getName());
             tivCategory.setText1(pet.getCategory() != null ? pet.getCategory().getName() : "No category");
             tivTag.setText1(pet.getTagList() != null && pet.getTagList().size() > 0 ? pet.getTagList().get(0).getName() : "No tags");
