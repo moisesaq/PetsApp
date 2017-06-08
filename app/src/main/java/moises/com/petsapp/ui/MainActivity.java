@@ -13,6 +13,7 @@ import moises.com.petsapp.R;
 import moises.com.petsapp.model.Pet;
 import moises.com.petsapp.ui.fragment.ContainerFragment;
 import moises.com.petsapp.ui.fragment.PetListFragment;
+import moises.com.petsapp.ui.test.MainMenuActivity;
 
 public class MainActivity extends AppCompatActivity implements PetListFragment.OnPetListFragmentListener{
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements PetListFragment.O
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            MainMenuActivity.startActivity(this);
             return true;
         }
 
