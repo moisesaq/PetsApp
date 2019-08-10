@@ -22,7 +22,7 @@ public interface UserDao {
     Cursor selectAll();
 
     @Query("SELECT * FROM " + User.TABLE_NAME + " WHERE " + User.COLUMN_ID + " = :id")
-    Cursor selectById();
+    Cursor selectById(long id);
 
     @Query("DELETE FROM " + User.TABLE_NAME + " WHERE " + User.COLUMN_ID + " =:id")
     int deleteById(long id);
